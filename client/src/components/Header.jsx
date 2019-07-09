@@ -12,9 +12,9 @@ export class Header extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="Header">
                 <img src={logo} alt="Open Recognition Logo" className="logo"/>
-                <h5>Sign Out</h5>
+                <a href=" " className="Signout">Sign Out</a>
             </div>
         );
     }

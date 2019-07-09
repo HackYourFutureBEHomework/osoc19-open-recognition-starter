@@ -6,7 +6,7 @@ import { Footer } from "./components/Footer";
 
 function App() {
   return (
-    <div className="App" style={{ padding: "2vh" }}>
+    <div className="App">
         <Header />
         <Main />
         <Footer />
