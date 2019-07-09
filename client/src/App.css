@@ -10,7 +10,7 @@ body {
   text-align: center;
   margin: auto;
   justify-content: center;
-  background-color: aquamarine;
+  background-color: #B0C7BD;
 
 }
 .Header{
@@ -25,9 +25,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 70px;
+  height: 80px;
   font-weight: 300;
-  background-color:grey;
+  background-color:#B8EBD0;
+}
+.logo{
+  width: 7%;
+  justify-content: center;
+}
+.Searchbar{
+  width: 30%;
 }
 .Signout{
   align-content: flex-end;
