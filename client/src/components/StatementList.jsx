@@ -1,5 +1,5 @@
 import React from "react";
-import { StatementItem } from "./StatementItem";
+//import { StatementItem } from "./StatementItem";
 
 export class StatementList extends React.Component {
     // constructor() {
@@ -10,7 +10,7 @@ export class StatementList extends React.Component {
     render() {
         return (
             <div>
-                <StatementItem />
+                <h1>Statement item</h1>
             </div>
         );
     }

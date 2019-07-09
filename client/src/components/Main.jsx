@@ -1,7 +1,7 @@
 import React from "react";
-// import { Badge } from "./Badge";
-// import { TrustBtn } from "./TrustBtn";
-// import { StatementList } from "./StatementList";
+import { Badge } from "./Badge";
+import { TrustBtn } from "./TrustBtn";
+import { StatementList } from "./StatementList";
 
 export class Main extends React.Component {
     // constructor() {
@@ -14,7 +14,9 @@ export class Main extends React.Component {
     render() {
         return (
             <div>
-                <h1>Main</h1>
+                <Badge />
+                <TrustBtn />
+                <StatementList />
             </div>
         );
     }

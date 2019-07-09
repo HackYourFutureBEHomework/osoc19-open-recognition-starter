@@ -1,4 +1,5 @@
 import React from "react";
+import logo from '../images/oR-logo.png';
 
 export class Header extends React.Component {
     // constructor() {
@@ -7,11 +8,13 @@ export class Header extends React.Component {
     //         title: ""
     //     };
     // }
+   
 
     render() {
         return (
             <div>
-                <h1>Header</h1>
+                <img src={logo} alt="Open Recognition Logo" className="logo"/>
+                <h5>Sign Out</h5>
             </div>
         );
     }
