@@ -1,18 +1,27 @@
 import React from "react";
 
 export class StatementItem extends React.Component {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         title: ""
-    //     };
-    // }
-
-    render() {
+    constructor(props) {
+        super(props);
+        this.state = {
+            text: props.text
+        };
+    }
+    renderItem(statement) {
         return (
-            <div>
-                <h1>Statement Item</h1>
-            </div>
+            <li>
+                <div>{statement}</div>
+            </li>
         );
+    }
+    render() {
+        const {
+            text
+        } = this.props;
+  
+        return this.renderItem(
+                text
+              );
+ 
     }
 }

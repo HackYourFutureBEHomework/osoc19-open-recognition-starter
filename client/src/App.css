@@ -39,4 +39,28 @@ body {
 .Signout{
   align-content: flex-end;
 }
+.BadgeSpacer{
+  height: 80px;
+}
+.ProfileBadge{
+  height:250px;
+  display: flex;
+  align-items: center;
+  background-color:#A4A5AE;
+}
+.BadgeImage{
+  flex-grow:2;
+  background-color:#907F9F;
+}
+.BadgeText{
+  flex-grow:5;
+  background-color:#8D5A97;
+  text-align: left;
+  
+}
+.ProfileImage{
+  width: 200px;
+  height: 200px;
+  justify-content: center;
+}
 
