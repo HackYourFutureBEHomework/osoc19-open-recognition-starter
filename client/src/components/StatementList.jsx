@@ -1,5 +1,6 @@
 import React from "react";
 import { StatementItem } from "./StatementItem";
+import AddStatementItem from "./AddStatementItem";
 //import axios from "axios";
 
 export class StatementList extends React.Component {
@@ -17,6 +18,7 @@ export class StatementList extends React.Component {
             statements: jsonData
         });
     };
+    
 
     render() {
         return (
@@ -28,9 +30,11 @@ export class StatementList extends React.Component {
                                 text={value.text}
                                 key={index}
                             />
+                            
                         );
                     })}
                 </ul>
+                <AddStatementItem />
             </div>
         );
     }
