@@ -10,8 +10,8 @@ export class Footer extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Footer</h1>
+            <div className="Footer">
+                <h4>Copyright</h4>
             </div>
         );
     }

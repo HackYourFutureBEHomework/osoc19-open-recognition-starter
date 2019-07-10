@@ -80,4 +80,15 @@ body {
   flex-grow:5;
   background-color:grey;
 }
+.Footer{
+  width: 90%;
+  margin: auto;
+  z-index: 5;
+  position: fixed;
+  color: black;
+  background-color: aqua;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
