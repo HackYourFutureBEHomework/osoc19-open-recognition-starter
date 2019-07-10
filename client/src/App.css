@@ -1,9 +1,9 @@
 *, 
 html, 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Ubuntu', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
 }
 .App {
   width: 90%;
@@ -62,5 +62,22 @@ body {
   width: 200px;
   height: 200px;
   justify-content: center;
+}
+.TrustButtonArea{
+  height:50px;
+  display: flex;
+  align-items: center;
+  background-color:rosybrown;
+}
+.TrustButton{
+  flex-grow:2;
+  background-color:#A4A5AE;
+}
+.TrstBtn{
+  width: 200px;
+}
+.CounterOfContact{
+  flex-grow:5;
+  background-color:grey;
 }
 

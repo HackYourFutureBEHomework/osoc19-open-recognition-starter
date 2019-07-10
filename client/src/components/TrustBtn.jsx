@@ -10,8 +10,13 @@ export class TrustBtn extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>Trust Button</h1>
+            <div className="TrustButtonArea">
+                <div className="TrustButton">
+                    <button className="TrstBtn">I trust this person</button>
+                </div>
+                <div className="CounterOfContact">
+                    <h3>13</h3>
+                </div>
             </div>
         );
     }
