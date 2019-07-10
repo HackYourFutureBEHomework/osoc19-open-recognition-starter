@@ -21,7 +21,6 @@ const createRow = async data =>
     INSERT INTO
       statements
       (
-        id,
         text,
         date,
         from_user_id,
@@ -29,7 +28,6 @@ const createRow = async data =>
       )
     VALUES
     (
-      ${data.id},
       ${data.text},
       ${data.date},
       ${data.fromUserId},
