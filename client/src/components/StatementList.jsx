@@ -39,3 +39,5 @@ export class StatementList extends React.Component {
         );
     }
 }
+
+export default StatementList;

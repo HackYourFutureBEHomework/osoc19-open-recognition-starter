@@ -1,12 +1,12 @@
 import React from "react";
 
 export class Footer extends React.Component {
-    // constructor() {
-    //     super();
-    //     this.state = {
-    //         title: ""
-    //     };
-    // }
+  // constructor() {
+  //     super();
+  //     this.state = {
+  //         title: ""
+  //     };
+  // }
 
     render() {
         return (
@@ -16,3 +16,5 @@ export class Footer extends React.Component {
         );
     }
 }
+
+export default Footer;
