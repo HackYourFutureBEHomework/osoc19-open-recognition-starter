@@ -4,19 +4,21 @@ import { Link } from "react-router-dom";
 import Skill from "../Skill/skills";
 
 class Header extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       search: "test"
     };
   }
 
   ssearch = () => {
+    this.props.getuser();
     fetch(`http://localhost:3000/users/search/${this.state.search}`)
       .then(response => response.json())
       .then(data => {
         this.props.history.push("/search");
         console.log(data);
+
         // this.setState({ skills: data });
       });
   };
