@@ -4,45 +4,31 @@ class AddStatementItem extends Component {
   constructor() {
     super();
     this.state = {
-      value: ""
+      statement: ""
     };
   }
 
-  addStatement = async trustStatemnet => {
-    const response = await fetch("/api/statements", {
-      method: "POST",
-      body: JSON.stringify({
-        text: trustStatemnet,
-        date: "9/7/2019",
-        fromUserId: 1,
-        toUserId: 2
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-    console.log("22222222222");
-  };
-
   handleChange = event => {
-    this.setState({ value: event.target.value });
-    console.log(this.state.value);
+    this.setState({ statement: event.target.value });
+    console.log(this.state.statement);
   };
 
   handleSubmit = event => {
-    this.addStatement(this.state.value);
+    this.props.addStatement(this.state.statement);
     event.preventDefault();
-    console.log("11111111");
+    console.log("new statement is added ..");
   };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <textarea onChange={this.handleChange}>
-          here is our text area for trust statement
-        </textarea>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="add_statement_area">
+        <form onSubmit={this.handleSubmit}>
+          <textarea onChange={this.handleChange}>
+            add trust statement....
+          </textarea>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }

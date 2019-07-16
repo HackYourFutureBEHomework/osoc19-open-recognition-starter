@@ -23,7 +23,8 @@ userRouter.post("/", async (req, res, next) => {
   const data = req.body;
   try {
     const user = await userTable.createRow(data);
-    return res.json(user);
+    console.log("232323232", user);
+    return res.send(user);
   } catch (err) {
     return next(err);
   }
@@ -33,14 +34,12 @@ userRouter.post("/", async (req, res, next) => {
 userRouter.get("/:id", async (req, res, next) => {
   const id = req.params.id;
   try {
-    const user = await userTable.getRow(id);
+    const user = await userTable.getRow(Number(id));
     return res.json(user);
   } catch (err) {
     return next(err);
   }
 });
-
-userRouter.get("/:id/statements");
 
 // Modify one specific user by id
 userRouter.put("/:id", async (req, res, next) => {
@@ -65,7 +64,7 @@ userRouter.delete("/:id", async (req, res, next) => {
   }
 });
 
-// Get all the statements wirtten by specific user
+// Get all the statements are wirtten to a specific user
 userRouter.get("/:id/statements", async (req, res, next) => {
   const id = req.params.id;
   try {

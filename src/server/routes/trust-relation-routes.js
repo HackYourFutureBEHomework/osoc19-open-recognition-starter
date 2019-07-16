@@ -52,15 +52,34 @@ trustRelationRouter.put("/:id", async (req, res, next) => {
 });
 
 // Delete one specific  trust relation by id
-trustRelationRouter.delete("/:id", async (req, res, next) => {
-  const id = req.params.id;
+trustRelationRouter.delete("/:fromUserId/:toUserId", async (req, res, next) => {
+  const fromUserId = req.params.fromUserId;
+  const toUserId = req.params.toUserId;
   try {
-    await trustRelationTable.deleteRow(id);
+    await trustRelationTable.deleteRow(fromUserId, toUserId);
     return res.json({});
   } catch (err) {
     return next(err);
   }
 });
+
+// Check if a trust relation is exited
+trustRelationRouter.get(
+  "/exist/:fromUserId/:toUserId",
+  async (req, res, next) => {
+    const fromUserId = req.params.fromUserId;
+    const toUserId = req.params.toUserId;
+    try {
+      const isExist = await trustRelationTable.checkRowExitence(
+        fromUserId,
+        toUserId
+      );
+      return res.json(isExist[0].exists);
+    } catch (err) {
+      return next(err);
+    }
+  }
+);
 
 // Export our trust relation router
 module.exports = trustRelationRouter;

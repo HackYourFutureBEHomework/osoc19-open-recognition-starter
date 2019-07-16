@@ -24,8 +24,7 @@ const createTable = () => {
 };
 
 const createRow = async data => {
-  console.log(data);
-  await database.query(SQL`
+  (await database.query(SQL`
   INSERT INTO
     users 
     (
@@ -48,9 +47,9 @@ const createRow = async data => {
       ${data.email},
       ${data.profession},
       ${data.address}
-    );`);
-
-  console.log("after inserting");
+    )
+    RETURNING 
+      *;`))[0];
 };
 
 const getRows = async () =>

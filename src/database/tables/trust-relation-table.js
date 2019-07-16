@@ -10,9 +10,7 @@ const createTable = () =>
     (
       id SERIAL PRIMARY KEY,
       from_user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE,
-      to_user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE,
-      direction INTEGER NOT NULL,
-      active BOOLEAN NOT NULL
+      to_user_id INTEGER NOT NULL REFERENCES users (id) ON DELETE CASCADE
     );
 `);
 
@@ -21,19 +19,13 @@ const createRow = async data =>
   INSERT INTO
     trust_relation
     (
-      id,
       from_user_id,
-      to_user_id,
-      direction,
-      active
+      to_user_id
     )
   VALUES
     (
-      ${data.id},
       ${data.fromUserId},
-      ${data.toUserId},
-      ${data.direction},
-      ${data.active}
+      ${data.toUserId}
     )
 `);
 
@@ -61,21 +53,25 @@ const updateRow = async (id, data) =>
     trust_relation
   SET
     from_user_id = ${data.fromUserId},
-    to_user_id = ${data.toUserId},
-    direction = ${data.direction},
-    active = ${data.active}
+    to_user_id = ${data.toUserId}
   WHERE
     id = ${id}
   RETURNING
     *;
 `))[0];
 
-const deleteRow = async id =>
+const deleteRow = async (fromUserId, toUserId) =>
   database.query(SQL`
   DELETE FROM
     trust_relation
   WHERE
-  id = ${id};
+  from_user_id = ${fromUserId} AND to_user_id = ${toUserId}
+`);
+
+const checkRowExitence = async (fromUserId, toUserId) =>
+  database.query(SQL`
+  SELECT EXISTS( SELECT * FROM trust_relation WHERE 
+      from_user_id = ${fromUserId} AND to_user_id = ${toUserId} );
 `);
 
 module.exports = {
@@ -84,5 +80,6 @@ module.exports = {
   getRows,
   getRow,
   updateRow,
-  deleteRow
+  deleteRow,
+  checkRowExitence
 };
