@@ -15,17 +15,27 @@ export default class Myroutes extends React.Component {
     };
   }
 
+  getuser = x => {
+    this.setState({
+      users: x
+    });
+  };
+
   render() {
     console.log(this.props.test);
     return (
       <div>
         <Router>
           <Switch>
-            <Route exact path="/" component={Header} />
+            <Route
+              exact
+              path="/"
+              render={props => <Header getuser={this.getuser} />}
+            />
             <Route
               exact
               path="/search"
-              render={props => <Search users={this.users} />}
+              render={props => <Search users={this.state.users} />}
             />
           </Switch>
         </Router>
