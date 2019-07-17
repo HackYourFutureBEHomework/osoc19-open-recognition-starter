@@ -8,10 +8,14 @@ export class StatementList extends React.Component {
 
   render() {
     return (
-      <div className="statement_list">
-        {this.props.userStatements.map(statement => (
-          <StatementItem key={statement.id} statementInfo={statement} />
-        ))}
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-11">
+              {this.props.userStatements.map(statement => (
+                  <StatementItem key={statement.id} statementInfo={statement} />
+                  ))}
+          </div>
+        </div>
       </div>
     );
   }

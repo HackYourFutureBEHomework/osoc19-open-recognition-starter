@@ -10,7 +10,7 @@ class UserProfile extends Component {
   constructor(props) {
     super();
     this.state = {
-      fromUserId: 3,
+      fromUserId: 2,
       toUserId: Number(props.location.pathname.split("/")[2]),
       toUserInfo: {},
       userStatements: [],
@@ -132,15 +132,14 @@ class UserProfile extends Component {
     return (
       <div className="user_profile">
         <Header />
-        <Badge userInfo={toUserInfo} />
-        <TrustBtn
+        <Badge userInfo={toUserInfo}           
           toUserId={toUserId}
           fromUserId={fromUserId}
           establishTrustRelation={this.establishTrustRelation}
           breakTrustRelation={this.breakTrustRelation}
           checkTrustExitence={this.checkTrustExitence}
-          isTrusted={isTrusted}
-        />
+          isTrusted={isTrusted} />
+
         <StatementList userId={toUserId} userStatements={userStatements} />
         {this.state.isTrustedToAdd && (
           <AddStatementItem addStatement={this.handleAddStatement} />

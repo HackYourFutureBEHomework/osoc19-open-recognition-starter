@@ -3,7 +3,6 @@ import Header from "./Header";
 import Badge from "./Badge";
 import StatementList from "./StatementList";
 import Footer from "./Footer";
-import "../App.css";
 
 class MyProfile extends Component {
   constructor() {

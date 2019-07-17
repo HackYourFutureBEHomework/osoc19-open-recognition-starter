@@ -35,13 +35,17 @@ class StatementItem extends Component {
     // const { statementInfo } = this.props;
     const { statement, publisher } = this.state;
     return (
-      <div className="statement_item">
-        <div className="statement_text"> {statement.text} </div>
-        <div className="statement_userInfo">
-          <img src={InfoImage} alt="InfoImage" />
-          <h3>{`${publisher.first_name} ${publisher.last_name}`}</h3>
-          <h3>{publisher.profession}</h3>
-        </div>
+      <div class="card">
+          <div class="card-body">
+              <div class="media">
+                  <img src={InfoImage} class="mr-3" alt="..." />
+                  <div class="media-body">
+                      <h5 class="mt-0">{`${publisher.first_name} ${publisher.last_name}`}</h5>
+                      <p>{publisher.profession}</p>
+                  </div>
+              </div>
+              <p class="card-text">{statement.text} </p>
+          </div>
       </div>
     );
   }
