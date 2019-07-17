@@ -38,7 +38,7 @@ class StatementItem extends Component {
       <div class="card">
           <div class="card-body">
               <div class="media">
-                  <img src={InfoImage} class="mr-3" alt="..." />
+                  <img src={InfoImage} class="mr-3" alt="..." width="50px" height="50px" />
                   <div class="media-body">
                       <h5 class="mt-0">{`${publisher.first_name} ${publisher.last_name}`}</h5>
                       <p>{publisher.profession}</p>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import Badge from "./Badge";
-import TrustBtn from "./TrustBtn";
 import StatementList from "./StatementList";
 import AddStatementItem from "./AddStatementsItem";
 import Footer from "./Footer";

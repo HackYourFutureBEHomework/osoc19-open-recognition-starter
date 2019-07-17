@@ -1,14 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import TrustBtn from "./TrustBtn";
 import ProfileImage from "../images/wael.JPG";
 
 const Badge = props => {
   const { userInfo, toUserId, fromUserId, isTrusted, establishTrustRelation, breakTrustRelation, checkTrustExitence } = props;
-  
-
-
   return (
-    
     <header class="jumbotron">
         <div class="container">
             <div class="row justify-content-md-center">
@@ -39,5 +35,4 @@ const Badge = props => {
     </header>
   );
 };
-
 export default Badge;
