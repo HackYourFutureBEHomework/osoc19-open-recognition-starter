@@ -9,7 +9,7 @@ class UserProfile extends Component {
   constructor(props) {
     super();
     this.state = {
-      fromUserId: 2,
+      fromUserId: 1,
       toUserId: Number(props.location.pathname.split("/")[2]),
       toUserInfo: {},
       userStatements: [],

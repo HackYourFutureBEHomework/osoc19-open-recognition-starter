@@ -35,6 +35,7 @@ class StatementItem extends Component {
     // const { statementInfo } = this.props;
     const { statement, publisher } = this.state;
     return (
+      <>
       <div class="card">
           <div class="card-body">
               <div class="media">
@@ -47,6 +48,8 @@ class StatementItem extends Component {
               <p class="card-text">{statement.text} </p>
           </div>
       </div>
+      <br/>
+      </>
     );
   }
 }
