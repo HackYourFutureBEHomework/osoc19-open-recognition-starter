@@ -12,7 +12,7 @@ externalUsersRouter.post("/", async (req, res, next) => {
   const data = req.body;
   try {
     const externalUser = await externalusersTable.createRow(data);
-    return res.json(externalUser);
+    return res.send(externalUser);
   } catch (err) {
     return next(err);
   }

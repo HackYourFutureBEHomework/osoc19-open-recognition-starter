@@ -1,5 +1,7 @@
-import React, { Component } from "react";
-import ProfileImage from "../images/wael.JPG";
+import React from "react";
+
+// import ProfileImage from "../images/wael.JPG";
+// import "../images";
 
 const Badge = props => {
   const { userInfo } = props;
@@ -7,7 +9,11 @@ const Badge = props => {
   return (
     <div className="ProfileBadge">
       <div className="BadgeImage">
-        <img src={ProfileImage} alt="Profile" className="ProfileImage" />
+        <img
+          src={process.env.PUBLIC_URL + userInfo.photo}
+          alt="Profile"
+          className="ProfileImage"
+        />
       </div>
       <div className="BadgeText">
         <h1>{`${userInfo.first_name} ${userInfo.last_name}`}</h1>

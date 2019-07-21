@@ -77,6 +77,7 @@ const updateRow = async (id, data) =>
   SET
     first_name = ${data.firstName},
     last_name = ${data.lastName},
+    photo =${data.photo},
     login = ${data.login},
     password = ${data.password},
     email = ${data.email},

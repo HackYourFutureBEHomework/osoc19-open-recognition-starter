@@ -23,6 +23,9 @@ app.use("/api/trust-relations", require("./routes/trust-relation-routes"));
 // Setup our external users routes
 app.use("/api/external-users", require("./routes/external-user-routes"));
 
+// Setup our links routes
+app.use("/api/links", require("./routes/links-routes"));
+
 app.use((err, req, res, next) => {
   console.error("Oops, we got an error:", err);
   if (!res.headersSent) {
