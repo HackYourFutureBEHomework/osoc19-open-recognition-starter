@@ -89,7 +89,8 @@ class ExternalUserForm extends Component {
 
   // add new statement into statements table
   addExternalStatement = async () => {
-    const response = await fetch("/api/statements", {
+    // eslint-disable-next-line
+    const response = await fetch("/api/statements", { 
       method: "POST",
       body: JSON.stringify({
         text: this.state.trustStatement,
@@ -105,16 +106,16 @@ class ExternalUserForm extends Component {
 
   viewFinishedView = () => {
     return (
-      <header className="jumbotron">
+      <header style={{height: '400px;'}} className="jumbotron">
         <div className="container">
           <div className="row justify-content-md-center">
               <div className="col-md-10">
-                  <h1 className="display-4">{`Thank your for your statement ${this.state.firstName}`} </h1>
+                  <h1 className="display-4">Thank you {`${this.state.firstName}`} </h1>
                   <p className="lead">You just made a comrubition to the profile. Well done! You will be directed to the profile you just contrubitured...</p>
                   <hr className="my-4"/>
                   <div className="text-center">
-                    <div className="spinner-border" role="status">
-                      <span className="sr-only">Loading...</span>
+                    <div className="spinner-border text-success" role="status">
+                        <span className="sr-only">Loading...</span>
                     </div>
                   </div>
               </div>

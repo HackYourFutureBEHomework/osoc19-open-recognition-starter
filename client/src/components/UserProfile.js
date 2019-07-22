@@ -25,24 +25,6 @@ class UserProfile extends Component {
     this.getUserStatements();
   };
 
-  // setToUserId = () => {
-  //   console.log(this.props.location.pathname);
-  //   if (this.props.location.pathname === "/userProfile/MyProfile") {
-  //     console.log("in if", this.props.location.pathname.split("/")[2]);
-  //     this.setState({ isMyProfile: true });
-  //     console.log("ismyprof ", this.state.wael);
-  //   } else {
-  //     console.log("in else", this.props.location.pathname.split("/")[2]);
-  //     this.setState({ isMyProfile: false });
-  //     // this.setState({
-  //     //   toUserId: Number(this.props.location.pathname.split("/")[2]),
-  //     //   isMyProfile: false
-  //     // });
-  //   }
-  //   console.log("isMyProfile", this.state.wael);
-  //   // console.log("ismy", this.state.isMyProfile);
-  // };
-
   // Get specific user's info from the server by id
   getToUserInfo = async () => {
     const data = await fetch(`/api/users/${this.state.toUserId}`);
@@ -53,6 +35,7 @@ class UserProfile extends Component {
 
   // Create a Trust relation from  fromUserId to toUserId
   establishTrustRelation = async (fromUserId, toUserId) => {
+    // eslint-disable-next-line
     const response = await fetch("/api/trust-relations", {
       method: "POST",
       body: JSON.stringify({
@@ -68,6 +51,7 @@ class UserProfile extends Component {
 
   // Delete the trust relation between fromUserId and toUserId
   breakTrustRelation = async (fromUserId, toUserId) => {
+    // eslint-disable-next-line
     const response = await fetch(
       `/api/trust-relations/${fromUserId}/${toUserId}`,
       {
@@ -84,6 +68,7 @@ class UserProfile extends Component {
   // Check if a specific trust relation between fromUserId and toUserId is already exist or not
 
   checkTrustExitence = async (fromUserId, toUserId) => {
+    // eslint-disable-next-line
     const response = await fetch(
       `/api/trust-relations/exist/${fromUserId}/${toUserId}`,
       {
@@ -121,6 +106,7 @@ class UserProfile extends Component {
   };
 
   handleAddStatement = async trustStatemnet => {
+    // eslint-disable-next-line
     const response = await fetch("/api/statements", {
       method: "POST",
       body: JSON.stringify({
