@@ -11,7 +11,8 @@ class MyProfile extends Component {
     this.state = {
       userId: Number(props.location.pathname.split("/")[2]),
       userInfo: {},
-      userStatements: []
+      userStatements: [],
+      showBtn: false
     };
   }
 
@@ -38,7 +39,9 @@ class MyProfile extends Component {
     return (
       <div className="myProfile">
         <Header />
-        <Badge userInfo={this.state.userInfo} />
+        <Badge userInfo={this.state.userInfo}
+               showBtn={false}
+        />
         <StatementList userStatements={this.state.userStatements} />
         <LinkGenerator userId={this.state.userId} />
         <Footer />

@@ -155,7 +155,9 @@ class UserProfile extends Component {
           establishTrustRelation={this.establishTrustRelation}
           breakTrustRelation={this.breakTrustRelation}
           checkTrustExitence={this.checkTrustExitence}
-          isTrusted={isTrusted} />
+          isTrusted={isTrusted} 
+          showBtn={true}
+          />
 
         <StatementList userId={toUserId} userStatements={userStatements} />
         {this.state.isTrustedToAdd && (

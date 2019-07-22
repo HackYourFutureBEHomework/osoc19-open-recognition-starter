@@ -6,7 +6,8 @@ import ProfileImage from "../images/wael.JPG";
 // import "../images";
 
 const Badge = props => {
-  const { userInfo, toUserId, fromUserId, isTrusted, establishTrustRelation, breakTrustRelation, checkTrustExitence } = props;
+  const { userInfo, toUserId, fromUserId, isTrusted, establishTrustRelation, breakTrustRelation, checkTrustExitence, showBtn } = props;
+  
   return (
     <header className="jumbotron">
         <div className="container">
@@ -23,12 +24,12 @@ const Badge = props => {
                 </div>
                 <div className="col-md-6">
                     <div className="d-flex align-items-end flex-column bd-highlight mb-3">
-                        <TrustBtn toUserId={toUserId} 
+                        {showBtn && <TrustBtn toUserId={toUserId} 
                                   fromUserId={fromUserId}
                                   establishTrustRelation={establishTrustRelation}
                                   breakTrustRelation={breakTrustRelation}
                                   checkTrustExitence={checkTrustExitence}
-                                  isTrusted={isTrusted}/>  
+                                  isTrusted={isTrusted}/> }
                         <div className="mt-auto p-2 bd-highlight">13</div>
                     </div>
                 </div>
