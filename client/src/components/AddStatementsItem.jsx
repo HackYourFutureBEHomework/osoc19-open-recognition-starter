@@ -22,17 +22,17 @@ class AddStatementItem extends Component {
 
   render() {
     return (
-      <div class="container">
-          <div class="row justify-content-md-center">
-              <div class="col-11">
-                  <div class="card">
-                      <div class="card-body">
+      <div className="container">
+          <div className="row justify-content-md-center">
+              <div className="col-11">
+                  <div className="card">
+                      <div className="card-body">
                           <form onSubmit={this.handleSubmit}>
-                              <div class="form-group">
+                              <div className="form-group">
                                   <label for="exampleFormControlTextarea1">Your Statement:</label>
-                                  <textarea value={this.state.statement} onChange={this.handleChange} class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                  <textarea value={this.state.statement} onChange={this.handleChange} className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                   </div>
-                              <button type="submit" class="btn btn-primary">Submit Statement</button>
+                              <button type="submit" className="btn btn-primary">Submit Statement</button>
                           </form>
                       </div>
                   </div>
