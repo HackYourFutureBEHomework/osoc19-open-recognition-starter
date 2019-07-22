@@ -14,6 +14,7 @@ const createTable = () =>
       from_user_id INTEGER REFERENCES users (id),
       to_user_id INTEGER NOT NULL REFERENCES users (id),
       from_external_user_id INTEGER REFERENCES external_user (id)
+      
     );
 `);
 

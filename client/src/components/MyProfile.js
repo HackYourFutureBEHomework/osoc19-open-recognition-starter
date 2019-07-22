@@ -4,8 +4,6 @@ import Badge from "./Badge";
 import StatementList from "./StatementList";
 import LinkGenerator from "./LinkGenerator";
 import Footer from "./Footer";
-import "../App.css";
-// import "../images";
 
 class MyProfile extends Component {
   constructor(props) {

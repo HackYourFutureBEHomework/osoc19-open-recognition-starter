@@ -105,9 +105,22 @@ class ExternalUserForm extends Component {
 
   viewFinishedView = () => {
     return (
-      <div>
-        <h1> {`Thank your for your statement ${this.state.firstName}`} </h1>
-      </div>
+      <header class="jumbotron">
+        <div class="container">
+          <div class="row justify-content-md-center">
+              <div class="col-md-10">
+                      <h1 class="display-4">{`Thank your for your statement ${this.state.firstName}`} </h1>
+                      <p class="lead">I just made a comrubition to a User's profile. Well done! You will be directed to the profile you just contrubitured...</p>
+                      <hr class="my-4"/>
+                      <div class="text-center">
+                      <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    </div>
+              </div>
+          </div>
+        </div>
+      </header>
     );
   };
 
