@@ -9,9 +9,11 @@ const createTable = () =>
     external_user
     (
       id SERIAL PRIMARY KEY,
-      full_name TEXT NOT NULL,
+      first_name TEXT NOT NULL,
+      last_name TEXT NOT NULL,
       email TEXT NOT NULL,
-      profession TEXT NOT NULL
+      profession TEXT NOT NULL,
+      photo Text
     );
 `);
 
@@ -20,18 +22,22 @@ const createRow = async data =>
     INSERT INTO
       external_user
       (
-        id,
-        full_name,
+        first_name,
+        last_name,
         email,
-        profession
+        profession,
+        photo
       )
     VALUES
     (
-      ${data.id},
-      ${data.fullName},
+      ${data.firstName},
+      ${data.lastName},
       ${data.email},
-      ${data.profession}
+      ${data.profession},
+      ${data.photo}
     )
+    RETURNING
+      *;
   `))[0];
 
 const getRows = async () =>
@@ -43,14 +49,14 @@ const getRows = async () =>
   `);
 
 const getRow = async id =>
-  await database.query(SQL`
+  (await database.query(SQL`
     SELECT
       *
     FROM
       external_user
     WHERE
     id = ${id};
-  `);
+  `))[0] || null;
 
 const deleteRow = async id =>
   database.query(SQL`

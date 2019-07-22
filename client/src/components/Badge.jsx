@@ -2,6 +2,9 @@ import React from "react";
 import TrustBtn from "./TrustBtn";
 import ProfileImage from "../images/wael.JPG";
 
+// import ProfileImage from "../images/wael.JPG";
+// import "../images";
+
 const Badge = props => {
   const { userInfo, toUserId, fromUserId, isTrusted, establishTrustRelation, breakTrustRelation, checkTrustExitence } = props;
   return (

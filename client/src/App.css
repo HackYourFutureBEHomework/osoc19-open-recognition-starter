@@ -192,6 +192,27 @@ body {
   height: 150px;
 }
 
+/* -------------------------------------------------------------- */
+
+.link-generator {
+  width: 95%;
+  background-color: sandybrown;
+  text-align: center;
+}
+
+.link-generator input {
+  width: 50%;
+}
+
+/* -------------------------------------------------------------- */
+
+.external-user-from {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* .TrustButton {
   flex-grow: 2;
   background-color: #a4a5ae;

@@ -11,8 +11,9 @@ const createTable = () =>
       id SERIAL PRIMARY KEY,
       text TEXT NOT NULL,
       date TEXT NOT NULL,
-      from_user_id INTEGER NOT NULL REFERENCES users (id),
-      to_user_id INTEGER NOT NULL REFERENCES users (id)
+      from_user_id INTEGER REFERENCES users (id),
+      to_user_id INTEGER NOT NULL REFERENCES users (id),
+      from_external_user_id INTEGER REFERENCES external_user (id)
     );
 `);
 
@@ -24,14 +25,16 @@ const createRow = async data =>
         text,
         date,
         from_user_id,
-        to_user_id
+        to_user_id,
+        from_external_user_id
       )
     VALUES
     (
       ${data.text},
       ${data.date},
       ${data.fromUserId},
-      ${data.toUserId}
+      ${data.toUserId},
+      ${data.fromExternalUserId}
     )
   `))[0];
 

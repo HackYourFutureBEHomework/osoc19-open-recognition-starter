@@ -9,7 +9,7 @@ class UserProfile extends Component {
   constructor(props) {
     super();
     this.state = {
-      fromUserId: 1,
+      fromUserId: 2,
       toUserId: Number(props.location.pathname.split("/")[2]),
       toUserInfo: {},
       userStatements: [],
@@ -24,6 +24,24 @@ class UserProfile extends Component {
     this.checkTrustPerson(this.state.toUserId, this.state.fromUserId);
     this.getUserStatements();
   };
+
+  // setToUserId = () => {
+  //   console.log(this.props.location.pathname);
+  //   if (this.props.location.pathname === "/userProfile/MyProfile") {
+  //     console.log("in if", this.props.location.pathname.split("/")[2]);
+  //     this.setState({ isMyProfile: true });
+  //     console.log("ismyprof ", this.state.wael);
+  //   } else {
+  //     console.log("in else", this.props.location.pathname.split("/")[2]);
+  //     this.setState({ isMyProfile: false });
+  //     // this.setState({
+  //     //   toUserId: Number(this.props.location.pathname.split("/")[2]),
+  //     //   isMyProfile: false
+  //     // });
+  //   }
+  //   console.log("isMyProfile", this.state.wael);
+  //   // console.log("ismy", this.state.isMyProfile);
+  // };
 
   // Get specific user's info from the server by id
   getToUserInfo = async () => {
