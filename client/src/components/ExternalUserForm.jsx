@@ -144,6 +144,7 @@ class ExternalUserForm extends Component {
                   <input type="text" id="professionText" className="form-control" placeholder="Your profession" aria-describedby="Profession" onChange={this.handleInputProfession} />
                   <br />
                   <input type="text" className="form-control" id="textForPhoto" aria-describedby="Picture" placeholder="Upload your picture" onChange={this.handleInputPhoto} />
+                  <br />
                   <div className="form-group">
                       
                       <p className="text-left">Enter your statement:</p>
