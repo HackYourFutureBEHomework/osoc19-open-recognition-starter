@@ -24,7 +24,7 @@ class LinkGenerator extends Component {
         <button onClick={this.handleGenerateEndpoint}>Generate</button>
         <input
           type="text"
-          value={`http://localhost:3000/addStatemetLink/user/${
+          defaultValue={`http://localhost:3000/addStatemetLink/user/${
             this.state.linkInfo.to_user_id
           }/${this.state.linkInfo.endpoint}`}
         />

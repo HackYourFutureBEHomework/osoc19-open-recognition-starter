@@ -16,8 +16,8 @@ class TrustBtn extends Component {
 
   turstedView = () => {
     return (
-      <div class="p-2 bd-highlight">
-        <button type="button" onClick={this.handleBreak} class="btn-lg btn-outline-success">Break Trust</button>
+      <div className="p-2 bd-highlight">
+        <button type="button" onClick={this.handleBreak} className="btn-lg btn-outline-success">Break Trust</button>
       </div>
     );
   };
@@ -25,8 +25,8 @@ class TrustBtn extends Component {
   defaultView = () => {
     console.log();
     return (
-      <div class="p-2 bd-highlight">
-        <button type="button" onClick={this.handleTrust} class="btn-lg btn-outline-success">I trust this person</button>
+      <div className="p-2 bd-highlight">
+        <button type="button" onClick={this.handleTrust} className="btn-lg btn-outline-success">I trust this person</button>
       </div>
     );
   };

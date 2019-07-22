@@ -54,16 +54,16 @@ class StatementItem extends Component {
     console.log(statement);
     return (
       <>
-      <div class="card">
-          <div class="card-body">
-              <div class="media">
-                  <img src={InfoImage} class="mr-3" alt="..." width="50px" height="50px" />
-                  <div class="media-body">
-                      <h5 class="mt-0">{`${publisher.first_name} ${publisher.last_name}`}</h5>
+      <div className="card">
+          <div className="card-body">
+              <div className="media">
+                  <img src={InfoImage} className="mr-3" alt="..." width="50px" height="50px" />
+                  <div className="media-body">
+                      <h5 className="mt-0">{`${publisher.first_name} ${publisher.last_name}`}</h5>
                       <p>{publisher.profession}</p>
                   </div>
               </div>
-              <p class="card-text">{statement.text} </p>
+              <p className="card-text">{statement.text} </p>
           </div>
       </div>
       <br/>

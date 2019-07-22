@@ -8,29 +8,28 @@ import ProfileImage from "../images/wael.JPG";
 const Badge = props => {
   const { userInfo, toUserId, fromUserId, isTrusted, establishTrustRelation, breakTrustRelation, checkTrustExitence } = props;
   return (
-    <header class="jumbotron">
-        <div class="container">
-            <div class="row justify-content-md-center">
-                <div class="col-md-5">
-                    <div class="media">
-                        <img src={ProfileImage} alt="Profile"  class="img-thumbnail" width="200px" height="200px" />
-                        <div class="media-body">
-                            <h2 class="mt-1">{`${userInfo.first_name} ${userInfo.last_name}`}</h2>
-                            <h6 class="mt-1">{`Email: ${userInfo.email}`}</h6>
-                            <h6 class="mt-1">{`Profession: ${userInfo.profession}`}</h6>
-                            
+    <header className="jumbotron">
+        <div className="container">
+            <div className="row justify-content-md-center">
+                <div className="col-md-5">
+                    <div className="media">
+                        <img src={ProfileImage} alt="Profile"  className="img-thumbnail" width="200px" height="200px" />
+                        <div className="media-body">
+                            <h2 className="mt-1">{`${userInfo.first_name} ${userInfo.last_name}`}</h2>
+                            <h6 className="mt-1">{`Email: ${userInfo.email}`}</h6>
+                            <h6 className="mt-1">{`Profession: ${userInfo.profession}`}</h6>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="d-flex align-items-end flex-column bd-highlight mb-3">
+                <div className="col-md-6">
+                    <div className="d-flex align-items-end flex-column bd-highlight mb-3">
                         <TrustBtn toUserId={toUserId} 
                                   fromUserId={fromUserId}
                                   establishTrustRelation={establishTrustRelation}
                                   breakTrustRelation={breakTrustRelation}
                                   checkTrustExitence={checkTrustExitence}
                                   isTrusted={isTrusted}/>  
-                        <div class="mt-auto p-2 bd-highlight">13</div>
+                        <div className="mt-auto p-2 bd-highlight">13</div>
                     </div>
                 </div>
             </div>
