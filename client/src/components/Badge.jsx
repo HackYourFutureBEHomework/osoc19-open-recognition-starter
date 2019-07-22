@@ -1,6 +1,6 @@
 import React from "react";
 import TrustBtn from "./TrustBtn";
-import ProfileImage from "../images/wael.JPG";
+import ProfileImage from "../img/wael.JPG";
 
 // import ProfileImage from "../images/wael.JPG";
 // import "../images";

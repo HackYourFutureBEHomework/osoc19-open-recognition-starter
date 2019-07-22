@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import InfoImage from "../images/default.png";
+import InfoImage from "../img/default.png";
 
 class StatementItem extends Component {
   constructor(props) {
