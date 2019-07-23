@@ -127,34 +127,34 @@ class ExternalUserForm extends Component {
 
   viewDefualtView = () => {
     return (
-      <div className="container">
-        <div className="row justify-content-md-center">
+      <div className="jumbotron text-center blue-grey lighten-5">  
+        <div className="row d-flex justify-content-center">
           <div className="col-md-10">
-              <form className="text-center border border-light p-5" action="#!" onSubmit={this.handleSubmit}>
-                  <h4 className="font-weight-bold">You're about to add a statement on  Wael's profile...</h4><br />
-                  <div className="form-row mb-4">
-                    <div className="col">
-                        <input type="text" id="defaultRegisterFormFirstName" className="form-control" placeholder="First name" onChange={this.handleInputFirstName} />
-                    </div>
-                    <div className="col">
-                      <input type="text" id="defaultRegisterFormLastName" className="form-control" placeholder="Last name" onChange={this.handleInputLastName} />
-                    </div>
+            <form className="text-center border border-success p-5" onSubmit={this.handleSubmit}>
+                <h4 className="font-weight-bold">You're about to add a statement on  Wael's profile...</h4><br />
+                <div className="form-row mb-4">
+                  <div className="col">
+                    <input type="text" id="defaultRegisterFormFirstName" className="form-control" placeholder="First name" onChange={this.handleInputFirstName} />
                   </div>
-                  <input type="email" id="emailEnter" className="form-control" placeholder="Your e-mail address" aria-describedby="Email address" onChange={this.handleInputEmail} />
+                  <div className="col">
+                    <input type="text" id="defaultRegisterFormLastName" className="form-control" placeholder="Last name" onChange={this.handleInputLastName} />
+                  </div>
+                </div>
+                    <input type="email" id="emailEnter" className="form-control" placeholder="Your e-mail address" aria-describedby="Email address" onChange={this.handleInputEmail} />
+                    <br />
+                    <input type="text" id="professionText" className="form-control" placeholder="Your profession" aria-describedby="Profession" onChange={this.handleInputProfession} />
                   <br />
-                  <input type="text" id="professionText" className="form-control" placeholder="Your profession" aria-describedby="Profession" onChange={this.handleInputProfession} />
-                  <br />
-                  <input type="text" className="form-control" id="textForPhoto" aria-describedby="Picture" placeholder="Upload your picture" onChange={this.handleInputPhoto} />
-                  <br />
+                    <input type="text" className="form-control" id="textForPhoto" aria-describedby="Picture" placeholder="Upload your picture" onChange={this.handleInputPhoto} />
                   <div className="form-group">
-                      <p className="text-left">Enter your statement:</p>
-                      <textarea className="form-control" id="statementTextArea" rows="3" onChange={this.handleInputStatement}></textarea>
+                    <hr />
+                    <p className="text-left">Enter your statement:</p>
+                    <textarea className="form-control" id="statementTextArea" rows="3" onChange={this.handleInputStatement}></textarea>
                   </div>
-                  <button type="submit" className="btn btn-primary">Submit</button>
+                 <button className="btn blue-gradient btn-rounded">Submit <i className="far fa-gem ml-1"></i></button>
               </form>
+            </div>
           </div>
         </div>
-    </div>
     );
   };
 
