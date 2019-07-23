@@ -14,16 +14,17 @@ process.on("SIGINT", () => process.exit(128));
   // Create the user table
   await userTable.createTable();
   console.log("User table is created..");
+  // Create the external user table
+  await externalUserTable.createTable();
+  console.log("External user table is created..");
   // Create the statements table
   await statementsTable.createTable();
   console.log("Statement table is created..");
   // Create the trust-relation table
   await turstRelationTable.createTable();
-  console.log("Turst relation table is created..");
-  // Create the external user table
-  await externalUserTable.createTable();
-  console.log("External user table is created..");
+  console.log("Trust relation table is created..");
   // Create the links table
   await linksTable.createTable();
   console.log("Links table is created..");
+
 })();

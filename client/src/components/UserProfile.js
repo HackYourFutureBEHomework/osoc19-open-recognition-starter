@@ -144,18 +144,6 @@ class UserProfile extends Component {
     return (
       <div className="user_profile">
         <Header />
-
-        <Badge userInfo={toUserInfo} />
-        {this.state.differentUser && (
-          <TrustBtn
-            toUserId={toUserId}
-            fromUserId={fromUserId}
-            establishTrustRelation={this.establishTrustRelation}
-            breakTrustRelation={this.breakTrustRelation}
-            checkTrustExitence={this.checkTrustExitence}
-            isTrusted={isTrusted}
-          />
-
         <Badge userInfo={toUserInfo}           
           toUserId={toUserId}
           fromUserId={fromUserId}
@@ -169,13 +157,7 @@ class UserProfile extends Component {
         <StatementList userId={toUserId} userStatements={userStatements} />
         {this.state.isTrustedToAdd && (
           <AddStatementItem addStatement={this.handleAddStatement} />
-
         )}
-        <StatementList userId={toUserId} userStatements={userStatements} />
-        {this.state.differentUser &&
-          (this.state.isTrustedToAdd && (
-            <AddStatementItem addStatement={this.handleAddStatement} />
-          ))}
         <Footer />
       </div>
     );

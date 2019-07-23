@@ -50,7 +50,7 @@ class Exteranl extends Component {
 
   render() {
     console.log(this.props.location.pathname.split("/")[2]);
-    return this.viewUserProfile();
+    return this.viewExternalForm();
   }
 }
 //<ExternalUserForm toUserInfo={this.state.toUserInfo} />

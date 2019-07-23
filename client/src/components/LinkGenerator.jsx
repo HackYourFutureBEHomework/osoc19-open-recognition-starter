@@ -58,11 +58,15 @@ class LinkGenerator extends Component {
     <div className="container">
       <div className="row justify-content-md-center">
           <div className="col-md-11">
-            <button onClick={this.handleGenerateEndpoint} class="btn btn-outline-default">Generate Link for non-members<i class="fas fa-external-link-alt pl-1"></i></button>
+            <button onClick={this.handleGenerateViewEndpoint} class="btn btn-outline-default">Share you profile...<i class="fas fa-external-link-alt pl-1"></i></button>
             <br />
-            <input type="text" id="generateLink" className="form-control col-lg-10" value={`http://localhost:3000/addStatemetLink/user/${
-                this.state.linkInfo.to_user_id
-              }/${this.state.linkInfo.endpoint}`} />
+            <input type="text" id="generateLink" className="form-control col-lg-10" Value={`http://localhost:3000/userProfileForExternal/${this.state.viewlinkInfo.endpoint}`}/>
+          </div>
+
+          <div className="col-md-11">
+            <button onClick={this.handleGenerateEditEndpoint} class="btn btn-outline-default">Open your profile for non-members<i class="fas fa-external-link-alt pl-1"></i></button>
+            <br />
+            <input type="text" id="generateLink" className="form-control col-lg-10" Value={`http://localhost:3000/userProfileForExternal/${this.state.editlinkInfo.endpoint}`} />
           </div>
       </div>
     </div>

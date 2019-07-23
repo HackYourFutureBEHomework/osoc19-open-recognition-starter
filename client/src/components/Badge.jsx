@@ -45,7 +45,7 @@ const Badge = props => {
                 <h6 className="font-weight-bold teal-text mb-4">{`${userInfo.profession}`}</h6>
               </div>
                 <div className="col-sm">
-                    <a className="btn-floating btn-lg btn-default text-white font-weight-bold" href={`www.google.com`}>13</a>
+                    
                 </div>
             </div>
           </div>
