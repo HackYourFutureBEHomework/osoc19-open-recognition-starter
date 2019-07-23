@@ -1,6 +1,10 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
 html,
     body,
     .jarallax {
+      font-family: 'Roboto', sans-serif;
       height: 200px;
     }
     header {
