@@ -10,41 +10,53 @@ const createTable = () => {
     (
       id SERIAL PRIMARY KEY,
       to_user_id INTEGER NOT NULL REFERENCES users (id),
-      endpoint TEXT NOT NULL
+      endpoint TEXT NOT NULL,
+      is_view_mode BOOLEAN NOT NULL
     );`);
 };
 
-const createRow = async (toUserId, generatedEndpoint) =>
+const createRow = async data =>
   (await database.query(SQL`
   INSERT INTO
     links
     (
       to_user_id,
-      endpoint
+      endpoint,
+      is_view_mode
     )
   VALUES
   (
-    ${toUserId},
-    ${generatedEndpoint}
+    ${data.toUserId},
+    ${data.endpoint},
+    ${data.isViewMode}
   )
   RETURNING
     *;
 `))[0];
 
-const getRow = async id =>
+// Get row by endpoint value
+const getRow = async endpoint =>
   (await database.query(SQL`
   SELECT
     *
   FROM
     links
   WHERE
-    to_user_id = ${id};
+    endpoint = ${endpoint};
 `))[0] || nul;
+
+const getUserByEndpoint = async link =>
+  (await database.query(SQL`
+  select * from users inner join 
+  (select to_user_id from links where endpoint = ${link}) t1
+  on id=t1.to_user_id;
+`))[0];
 
 console.log("links table is created ...");
 
 module.exports = {
   createTable,
   createRow,
-  getRow
+  getRow,
+  getUserByEndpoint
 };

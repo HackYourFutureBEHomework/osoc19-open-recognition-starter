@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import MyProfile from "./MyProfile";
 
 class ExternalUserForm extends Component {
   constructor() {
@@ -11,13 +12,93 @@ class ExternalUserForm extends Component {
       photo: "",
       trustStatement: "",
       externalUserInfo: {},
-      toUserInfo: {},
-      isFinished: false
+      isFinished: false,
+      after5sec: false
     };
   }
 
-  componentDidMount = () => {
-    this.getToUserInfo();
+  handleSubmit = e => {
+    this.addExternalUser();
+    setTimeout(() => {
+      this.addExternalStatement();
+    }, 1000);
+    e.preventDefault();
+    this.setState({ isFinished: true });
+    setTimeout(() => {
+      this.changeAfter5second();
+      console.log("aftr5sec changes");
+    }, 6000);
+  };
+
+  //Add new external user to external users table
+  addExternalUser = async () => {
+    const response = await fetch("/api/external-users", {
+      method: "POST",
+      body: JSON.stringify({
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        profession: this.state.profession,
+        photo: this.state.photo
+      }),
+      headers: { "Content-Type": "application/json" }
+    });
+    const externalUserInfo = await response.json();
+    this.setState({ externalUserInfo });
+    console.log(this.state.externalUserInfo);
+  };
+
+  // add new statement into statements table
+  addExternalStatement = async () => {
+    // eslint-disable-next-line
+    const response = await fetch("/api/statements", { 
+      method: "POST",
+      body: JSON.stringify({
+        text: this.state.trustStatement,
+        date: "17/7/2019",
+        fromExternalUserId: this.state.externalUserInfo.id,
+        toUserId: this.props.toUserInfo.id
+      }),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+  };
+
+  viewUserProfile = () => {
+    return <MyProfile userId={this.props.toUserInfo.id} isExternal={true} />;
+  };
+
+  changeAfter5second = () => {
+    this.setState({ after5sec: true });
+    this.viewFinishedView();
+  };
+
+  viewThanksMessage = () => {
+    return (
+      <header style={{height: '100px;'}} className="jumbotron">
+        <div className="container">
+          <div className="row justify-content-md-center">
+              <div className="col-md-10">
+                  <h1 className="display-4">Thank you {`${this.state.firstName}`} </h1>
+                  <p className="lead">You just made a comrubition to the profile. Well done! You will be directed to the profile you just contrubitured...</p>
+                  <hr className="my-4"/>
+                  <div className="text-center">
+                    <div className="spinner-border text-success" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </header>
+    );
+  };
+
+  viewFinishedView = () => {
+    return this.state.after5sec
+      ? this.viewUserProfile()
+      : this.viewThanksMessage();
   };
 
   handleInputFirstName = e => {
@@ -48,81 +129,6 @@ class ExternalUserForm extends Component {
   handleInputStatement = e => {
     this.setState({ trustStatement: e.target.value });
     console.log("statement", this.state.trustStatement);
-  };
-
-  handleSubmit = e => {
-    this.addExternalUser();
-    setTimeout(() => {
-      this.addExternalStatement();
-    }, 1000);
-    e.preventDefault();
-    this.setState({ isFinished: true });
-  };
-
-  //Add new external user to external users table
-  addExternalUser = async () => {
-    const response = await fetch("/api/external-users", {
-      method: "POST",
-      body: JSON.stringify({
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        profession: this.state.profession,
-        photo: this.state.photo
-      }),
-      headers: { "Content-Type": "application/json" }
-    });
-    const externalUserInfo = await response.json();
-    this.setState({ externalUserInfo });
-    console.log(this.state.externalUserInfo);
-  };
-
-  //Get user's info who statement will be written on his/her profile
-  getToUserInfo = async () => {
-    const data = await fetch(
-      `/api/users/${Number(this.props.location.pathname.split("/")[3])}`
-    );
-    const userData = await data.json();
-    this.setState({ toUserInfo: userData });
-    console.log("toUserInfo", this.state.toUserInfo);
-  };
-
-  // add new statement into statements table
-  addExternalStatement = async () => {
-    // eslint-disable-next-line
-    const response = await fetch("/api/statements", { 
-      method: "POST",
-      body: JSON.stringify({
-        text: this.state.trustStatement,
-        date: "17/7/2019",
-        fromExternalUserId: this.state.externalUserInfo.id,
-        toUserId: this.state.toUserInfo.id
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
-  };
-
-  viewFinishedView = () => {
-    return (
-      <header style={{height: '100px;'}} className="jumbotron">
-        <div className="container">
-          <div className="row justify-content-md-center">
-              <div className="col-md-10">
-                  <h1 className="display-4">Thank you {`${this.state.firstName}`} </h1>
-                  <p className="lead">You just made a comrubition to the profile. Well done! You will be directed to the profile you just contrubitured...</p>
-                  <hr className="my-4"/>
-                  <div className="text-center">
-                    <div className="spinner-border text-success" role="status">
-                        <span className="sr-only">Loading...</span>
-                    </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-      </header>
-    );
   };
 
   viewDefualtView = () => {

@@ -32,7 +32,6 @@ class StatementItem extends Component {
   };
 
   render() {
-    // const { statementInfo } = this.props;
     const { statement, publisher } = this.state;
     console.log(statement);
     return (

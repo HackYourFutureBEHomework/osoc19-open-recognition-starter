@@ -14,7 +14,8 @@ class UserProfile extends Component {
       toUserInfo: {},
       userStatements: [],
       isTrusted: false,
-      isTrustedToAdd: false
+      isTrustedToAdd: false,
+      differentUser: true
     };
   }
 
@@ -23,6 +24,14 @@ class UserProfile extends Component {
     this.checkTrustExitence(this.state.fromUserId, this.state.toUserId);
     this.checkTrustPerson(this.state.toUserId, this.state.fromUserId);
     this.getUserStatements();
+    this.checkSameUser();
+  };
+
+
+  checkSameUser = () => {
+    if (this.state.fromUserId === this.state.toUserId) {
+      this.setState({ differentUser: false });
+    }
   };
 
   // Get specific user's info from the server by id
@@ -135,6 +144,18 @@ class UserProfile extends Component {
     return (
       <div className="user_profile">
         <Header />
+
+        <Badge userInfo={toUserInfo} />
+        {this.state.differentUser && (
+          <TrustBtn
+            toUserId={toUserId}
+            fromUserId={fromUserId}
+            establishTrustRelation={this.establishTrustRelation}
+            breakTrustRelation={this.breakTrustRelation}
+            checkTrustExitence={this.checkTrustExitence}
+            isTrusted={isTrusted}
+          />
+
         <Badge userInfo={toUserInfo}           
           toUserId={toUserId}
           fromUserId={fromUserId}
@@ -148,7 +169,13 @@ class UserProfile extends Component {
         <StatementList userId={toUserId} userStatements={userStatements} />
         {this.state.isTrustedToAdd && (
           <AddStatementItem addStatement={this.handleAddStatement} />
+
         )}
+        <StatementList userId={toUserId} userStatements={userStatements} />
+        {this.state.differentUser &&
+          (this.state.isTrustedToAdd && (
+            <AddStatementItem addStatement={this.handleAddStatement} />
+          ))}
         <Footer />
       </div>
     );
