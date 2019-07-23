@@ -131,7 +131,7 @@ class ExternalUserForm extends Component {
         <div className="row d-flex justify-content-center">
           <div className="col-md-10">
             <form className="text-center border border-success p-5" onSubmit={this.handleSubmit}>
-                <h4 className="font-weight-bold">You're about to add a statement on  Wael's profile...</h4><br />
+                <h4 className="font-weight-bold">You're about to add a statement on  someone's profile...</h4><br />
                 <div className="form-row mb-4">
                   <div className="col">
                     <input type="text" id="defaultRegisterFormFirstName" className="form-control" placeholder="First name" onChange={this.handleInputFirstName} />
