@@ -40,8 +40,7 @@ class MyProfile extends Component {
       <div className="myProfile">
         <Header />
         <Badge userInfo={this.state.userInfo}
-               showBtn={false}
-        />
+               showBtn={false} />
         <StatementList userStatements={this.state.userStatements} />
         <LinkGenerator userId={this.state.userId} />
         <Footer />

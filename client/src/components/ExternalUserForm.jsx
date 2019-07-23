@@ -106,7 +106,7 @@ class ExternalUserForm extends Component {
 
   viewFinishedView = () => {
     return (
-      <header style={{height: '400px;'}} className="jumbotron">
+      <header style={{height: '100px;'}} className="jumbotron">
         <div className="container">
           <div className="row justify-content-md-center">
               <div className="col-md-10">
