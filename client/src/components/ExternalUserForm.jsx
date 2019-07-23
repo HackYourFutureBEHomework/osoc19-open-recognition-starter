@@ -27,7 +27,7 @@ class ExternalUserForm extends Component {
     setTimeout(() => {
       this.changeAfter5second();
       console.log("aftr5sec changes");
-    }, 6000);
+    }, 4000);
   };
 
   //Add new external user to external users table

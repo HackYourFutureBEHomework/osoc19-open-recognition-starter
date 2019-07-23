@@ -37,7 +37,7 @@ const Badge = props => {
               </div>
               <div className="col-sm">
                 <div className="avatar mx-auto">
-                  <img src={userInfo.photo} className="img-fluid rounded-circle z-depth-1" alt="avatar" style={{width: '230px'}} />
+                  <img src={userInfo.photo} className="img-fluid rounded-circle z-depth-1" alt="avatar" style={{width: '230px', height: '230px;'} } />
                 </div>
                 <h3 className="my-3 font-weight-bold">
                   <strong>{`${userInfo.first_name} ${userInfo.last_name}`}</strong>
@@ -45,7 +45,7 @@ const Badge = props => {
                 <h6 className="font-weight-bold teal-text mb-4">{`${userInfo.profession}`}</h6>
               </div>
                 <div className="col-sm">
-                    
+                  
                 </div>
             </div>
           </div>
