@@ -21,9 +21,10 @@ class PeopleTrustedUser extends Component {
    const { trustedUsersList } = this.state;
    const trustedUsers = trustedUsersList.map(user => (
      <>
-    <div class="chip chip-md">
+    <div class="chip chip-md mb-3">
         <img src={user.photo} alt="Contact Person" /> <span className="font-weight-bold teal-text mb-10">{`${user.first_name} ${user.last_name}`}</span>
     </div>
+    
      </>
    ));
    return <div>{trustedUsers}</div>;
