@@ -15,7 +15,8 @@ class UserProfile extends Component {
       toUserInfo: {},
       userStatements: [],
       isTrusted: false,
-      isTrustedToAdd: false
+      isTrustedToAdd: false,
+      differentUser: true
     };
   }
 
@@ -24,26 +25,14 @@ class UserProfile extends Component {
     this.checkTrustExitence(this.state.fromUserId, this.state.toUserId);
     this.checkTrustPerson(this.state.toUserId, this.state.fromUserId);
     this.getUserStatements();
+    this.checkSameUser();
   };
 
-  // setToUserId = () => {
-  //   console.log(this.props.location.pathname);
-  //   if (this.props.location.pathname === "/userProfile/MyProfile") {
-  //     console.log("in if", this.props.location.pathname.split("/")[2]);
-  //     this.setState({ isMyProfile: true });
-  //     console.log("ismyprof ", this.state.wael);
-  //   } else {
-  //     console.log("in else", this.props.location.pathname.split("/")[2]);
-  //     this.setState({ isMyProfile: false });
-  //     // this.setState({
-  //     //   toUserId: Number(this.props.location.pathname.split("/")[2]),
-  //     //   isMyProfile: false
-  //     // });
-  //   }
-  //   console.log("isMyProfile", this.state.wael);
-  //   // console.log("ismy", this.state.isMyProfile);
-  // };
-
+  checkSameUser = () => {
+    if (this.state.fromUserId === this.state.toUserId) {
+      this.setState({ differentUser: false });
+    }
+  };
   // Get specific user's info from the server by id
   getToUserInfo = async () => {
     const data = await fetch(`/api/users/${this.state.toUserId}`);
@@ -151,18 +140,21 @@ class UserProfile extends Component {
       <div className="user_profile">
         <Header />
         <Badge userInfo={toUserInfo} />
-        <TrustBtn
-          toUserId={toUserId}
-          fromUserId={fromUserId}
-          establishTrustRelation={this.establishTrustRelation}
-          breakTrustRelation={this.breakTrustRelation}
-          checkTrustExitence={this.checkTrustExitence}
-          isTrusted={isTrusted}
-        />
-        <StatementList userId={toUserId} userStatements={userStatements} />
-        {this.state.isTrustedToAdd && (
-          <AddStatementItem addStatement={this.handleAddStatement} />
+        {this.state.differentUser && (
+          <TrustBtn
+            toUserId={toUserId}
+            fromUserId={fromUserId}
+            establishTrustRelation={this.establishTrustRelation}
+            breakTrustRelation={this.breakTrustRelation}
+            checkTrustExitence={this.checkTrustExitence}
+            isTrusted={isTrusted}
+          />
         )}
+        <StatementList userId={toUserId} userStatements={userStatements} />
+        {this.state.differentUser &&
+          (this.state.isTrustedToAdd && (
+            <AddStatementItem addStatement={this.handleAddStatement} />
+          ))}
         <Footer />
       </div>
     );

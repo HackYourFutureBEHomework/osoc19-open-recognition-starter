@@ -4,7 +4,7 @@
 const express = require("express");
 const userTable = require("../../database/tables/users-table");
 const statementTable = require("../../database/tables/statements-table");
-const linkTable = require("../../database/tables/links-table");
+const trustRelationTable = require("../../database/tables/trust-relation-table");
 
 // Create our router for our users API
 const userRouter = express.Router();
@@ -76,49 +76,16 @@ userRouter.get("/:id/statements", async (req, res, next) => {
   }
 });
 
-userRouter.post("/:id/links", async (req, res, next) => {
-  const makeid = length => {
-    let result = "";
-    let characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-    let charactersLength = characters.length;
-    for (var i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-    }
-    return result;
-  };
-  const toUserId = req.params.id;
-  const generatedEndpoint = makeid(20);
+// Get all trust relations of specific user
+userRouter.get("/:id/trustedUsers", async (req, res, next) => {
+  const id = req.params.id;
   try {
-    const link = await linkTable.createRow(toUserId, generatedEndpoint);
-    return res.send(link);
+    const trustedUsers = await trustRelationTable.getTrustedUsers(id);
+    return res.json(trustedUsers);
   } catch (err) {
     return next(err);
   }
 });
-
-//   // generate random link
-//   // add row to link table (user_id, link)
-//   // return the generated link
-//   try {
-//     const userStatements = await statementTable.getUserStatements(id);
-//     return res.json(userStatements);
-//   } catch (err) {
-//     return next(err);
-//   }
-// });
-
-// userRouter.get("/link", async (req, res, next) => {
-//   const id = req.params.id;
-//   // select user_id by link(in the query string)
-//   // return user id
-//   try {
-//     const userStatements = await statementTable.getUserStatements(id);
-//     return res.json(userStatements);
-//   } catch (err) {
-//     return next(err);
-//   }
-// });
 
 // Export our user router
 module.exports = userRouter;

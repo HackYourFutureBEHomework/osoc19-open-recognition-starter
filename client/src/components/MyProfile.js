@@ -11,7 +11,7 @@ class MyProfile extends Component {
   constructor(props) {
     super();
     this.state = {
-      userId: Number(props.location.pathname.split("/")[2]),
+      userId: props.userId || Number(props.location.pathname.split("/")[2]),
       userInfo: {},
       userStatements: []
     };
@@ -20,6 +20,7 @@ class MyProfile extends Component {
   componentDidMount = () => {
     this.getUserData();
     this.getUserStatements();
+    console.log(this.state.isExternal);
   };
 
   // Get specific user's info from the server by id
@@ -37,12 +38,14 @@ class MyProfile extends Component {
   };
 
   render() {
+    const isExternal =
+      this.props.isExternal === undefined ? false : this.props.isExternal;
     return (
       <div className="myProfile">
         <Header />
         <Badge userInfo={this.state.userInfo} />
         <StatementList userStatements={this.state.userStatements} />
-        <LinkGenerator userId={this.state.userId} />
+        {!isExternal && <LinkGenerator userId={this.state.userId} />}
         <Footer />
       </div>
     );
