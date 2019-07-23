@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import InfoImage from "../images/default.png";
 
 class StatementItem extends Component {
   constructor(props) {
@@ -32,34 +31,26 @@ class StatementItem extends Component {
     console.log("ExP", ExPublisherData);
   };
 
-  // Get all users from the server
-  // getUsersData = async () => {
-  //   const data = await fetch("/api/users/");
-  //   const usersData = await data.json();
-  //   this.setState({ users: usersData });
-
-  //   this.getPublisherInfo(this.state.statement.from_user_id);
-  // };
-
-  // // Get the specific statement's owner info by Id
-  // getPublisherInfo = id => {
-  //   const users = [...this.state.users];
-  //   const Index = users.findIndex(user => user.id === id);
-  //   this.setState({ publisher: users[Index] });
-  // };
-
   render() {
     const { statement, publisher } = this.state;
     console.log(statement);
     return (
-      <div className="statement_item">
-        <div className="statement_text"> {statement.text} </div>
-        <div className="statement_userInfo">
-          <img src={InfoImage} alt="InfoImage" />
-          <h3>{`${publisher.first_name} ${publisher.last_name}`}</h3>
-          <h3>{publisher.profession}</h3>
-        </div>
+      <>
+      <div className="container">
+        <section >
+          <div className="media mt-4 px-1">
+            <img className="card-img-100 d-flex z-depth-1 mr-3" src={publisher.photo}
+              alt="Generic placeholder" />
+            <div className="media-body">
+              <h5 className="font-weight-bold mt-0">{`${publisher.first_name} ${publisher.last_name}`}</h5>
+              <p>{publisher.profession}</p>
+              <p>{statement.text}</p>
+            </div>
+          </div>
+        </section>
       </div>
+      <br />
+      </>
     );
   }
 }

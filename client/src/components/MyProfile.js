@@ -4,8 +4,6 @@ import Badge from "./Badge";
 import StatementList from "./StatementList";
 import LinkGenerator from "./LinkGenerator";
 import Footer from "./Footer";
-import "../App.css";
-// import "../images";
 
 class MyProfile extends Component {
   constructor(props) {
@@ -13,7 +11,8 @@ class MyProfile extends Component {
     this.state = {
       userId: props.userId || Number(props.location.pathname.split("/")[2]),
       userInfo: {},
-      userStatements: []
+      userStatements: [],
+      showBtn: false
     };
   }
 
@@ -43,7 +42,8 @@ class MyProfile extends Component {
     return (
       <div className="myProfile">
         <Header />
-        <Badge userInfo={this.state.userInfo} />
+        <Badge userInfo={this.state.userInfo}
+               showBtn={false} />
         <StatementList userStatements={this.state.userStatements} />
         {!isExternal && <LinkGenerator userId={this.state.userId} />}
         <Footer />

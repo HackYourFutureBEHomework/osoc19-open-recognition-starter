@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import Badge from "./Badge";
-import TrustBtn from "./TrustBtn";
 import StatementList from "./StatementList";
 import AddStatementItem from "./AddStatementsItem";
 import Footer from "./Footer";
@@ -10,7 +9,7 @@ class UserProfile extends Component {
   constructor(props) {
     super();
     this.state = {
-      fromUserId: 2,
+      fromUserId: 1,
       toUserId: Number(props.location.pathname.split("/")[2]),
       toUserInfo: {},
       userStatements: [],
@@ -28,11 +27,13 @@ class UserProfile extends Component {
     this.checkSameUser();
   };
 
+
   checkSameUser = () => {
     if (this.state.fromUserId === this.state.toUserId) {
       this.setState({ differentUser: false });
     }
   };
+
   // Get specific user's info from the server by id
   getToUserInfo = async () => {
     const data = await fetch(`/api/users/${this.state.toUserId}`);
@@ -43,6 +44,7 @@ class UserProfile extends Component {
 
   // Create a Trust relation from  fromUserId to toUserId
   establishTrustRelation = async (fromUserId, toUserId) => {
+    // eslint-disable-next-line
     const response = await fetch("/api/trust-relations", {
       method: "POST",
       body: JSON.stringify({
@@ -58,6 +60,7 @@ class UserProfile extends Component {
 
   // Delete the trust relation between fromUserId and toUserId
   breakTrustRelation = async (fromUserId, toUserId) => {
+    // eslint-disable-next-line
     const response = await fetch(
       `/api/trust-relations/${fromUserId}/${toUserId}`,
       {
@@ -74,6 +77,7 @@ class UserProfile extends Component {
   // Check if a specific trust relation between fromUserId and toUserId is already exist or not
 
   checkTrustExitence = async (fromUserId, toUserId) => {
+    // eslint-disable-next-line
     const response = await fetch(
       `/api/trust-relations/exist/${fromUserId}/${toUserId}`,
       {
@@ -111,6 +115,7 @@ class UserProfile extends Component {
   };
 
   handleAddStatement = async trustStatemnet => {
+    // eslint-disable-next-line
     const response = await fetch("/api/statements", {
       method: "POST",
       body: JSON.stringify({
@@ -139,6 +144,7 @@ class UserProfile extends Component {
     return (
       <div className="user_profile">
         <Header />
+
         <Badge userInfo={toUserInfo} />
         {this.state.differentUser && (
           <TrustBtn
@@ -149,6 +155,21 @@ class UserProfile extends Component {
             checkTrustExitence={this.checkTrustExitence}
             isTrusted={isTrusted}
           />
+
+        <Badge userInfo={toUserInfo}           
+          toUserId={toUserId}
+          fromUserId={fromUserId}
+          establishTrustRelation={this.establishTrustRelation}
+          breakTrustRelation={this.breakTrustRelation}
+          checkTrustExitence={this.checkTrustExitence}
+          isTrusted={isTrusted} 
+          showBtn={true}
+          />
+
+        <StatementList userId={toUserId} userStatements={userStatements} />
+        {this.state.isTrustedToAdd && (
+          <AddStatementItem addStatement={this.handleAddStatement} />
+
         )}
         <StatementList userId={toUserId} userStatements={userStatements} />
         {this.state.differentUser &&

@@ -1,0 +1,65 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+html,
+    body,
+    .jarallax {
+      font-family: 'Roboto', sans-serif;
+      height: 230px;
+    }
+    header {
+      height: 70px;
+    }
+
+    @media (max-width: 740px) {
+      html,
+      body,
+      .jarallax {
+        height: 30vh;
+      }
+      header {
+        height: 50px;
+      }
+    }
+
+     @media (min-width: 800px) and (max-width: 850px) {
+      html,
+      body,
+      .jarallax {
+        height: 40vh;
+      }
+      header {
+        height: 50px;
+      }
+    }
+
+    @media (min-width: 560px) and (max-width: 660px) {
+      header .jarallax h5 {
+        display: none !important;
+      }
+    }
+
+    .page-footer {
+      margin-top: 0px;
+      padding-top: 0px;
+    }
+
+    .chip.chip-md {
+      height: 42px;
+      line-height: 42px;
+      border-radius: 21px;
+      }
+      .chip.chip-md img {
+      height: 42px;
+      width: 42px;
+      }
+      
+      .chip.chip-lg {
+      height: 52px;
+      line-height: 52px;
+      border-radius: 26px;
+      }
+      .chip.chip-lg img {
+      height: 52px;
+      width: 52px;
+      }

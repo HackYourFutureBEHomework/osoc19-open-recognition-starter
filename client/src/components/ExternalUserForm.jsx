@@ -50,7 +50,8 @@ class ExternalUserForm extends Component {
 
   // add new statement into statements table
   addExternalStatement = async () => {
-    const response = await fetch("/api/statements", {
+    // eslint-disable-next-line
+    const response = await fetch("/api/statements", { 
       method: "POST",
       body: JSON.stringify({
         text: this.state.trustStatement,
@@ -75,9 +76,22 @@ class ExternalUserForm extends Component {
 
   viewThanksMessage = () => {
     return (
-      <div>
-        <h1> {`Thank your for your statement ${this.state.firstName}`} </h1>
-      </div>
+      <header style={{height: '100px;'}} className="jumbotron">
+        <div className="container">
+          <div className="row justify-content-md-center">
+              <div className="col-md-10">
+                  <h1 className="display-4">Thank you {`${this.state.firstName}`} </h1>
+                  <p className="lead">You just made a comrubition to the profile. Well done! You will be directed to the profile you just contrubitured...</p>
+                  <hr className="my-4"/>
+                  <div className="text-center">
+                    <div className="spinner-border text-success" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </header>
     );
   };
 
@@ -119,57 +133,34 @@ class ExternalUserForm extends Component {
 
   viewDefualtView = () => {
     return (
-      <div>
-        <form className="external-user-from" onSubmit={this.handleSubmit}>
-          <label>
-            First Name:
-            <input
-              type="text"
-              placeholder="example Jhon"
-              onChange={this.handleInputFirstName}
-            />
-          </label>
-          <label>
-            Last Name:
-            <input
-              type="text"
-              placeholder="example Doe"
-              onChange={this.handleInputLastName}
-            />
-          </label>
-          <label>
-            Email:
-            <input
-              type="text"
-              placeholder="example JhonDoe@gamil.com"
-              onChange={this.handleInputEmail}
-            />
-          </label>
-          <label>
-            Profession:
-            <input
-              type="text"
-              placeholder="example Web Developer"
-              onChange={this.handleInputProfession}
-            />
-          </label>
-          <label>
-            Photo:
-            <input
-              type="text"
-              placeholder="example John.png"
-              onChange={this.handleInputPhoto}
-            />
-          </label>
-          Your Statement :
-          <textarea
-            type="text"
-            placeholder="Write your statement here"
-            onChange={this.handleInputStatement}
-          />
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
+      <div className="jumbotron text-center blue-grey lighten-5">  
+        <div className="row d-flex justify-content-center">
+          <div className="col-md-10">
+            <form className="text-center border border-success p-5" onSubmit={this.handleSubmit}>
+                <h4 className="font-weight-bold">You're about to add a statement on  someone's profile...</h4><br />
+                <div className="form-row mb-4">
+                  <div className="col">
+                    <input type="text" id="defaultRegisterFormFirstName" className="form-control" placeholder="First name" onChange={this.handleInputFirstName} />
+                  </div>
+                  <div className="col">
+                    <input type="text" id="defaultRegisterFormLastName" className="form-control" placeholder="Last name" onChange={this.handleInputLastName} />
+                  </div>
+                </div>
+                    <input type="email" id="emailEnter" className="form-control" placeholder="Your e-mail address" aria-describedby="Email address" onChange={this.handleInputEmail} />
+                    <br />
+                    <input type="text" id="professionText" className="form-control" placeholder="Your profession" aria-describedby="Profession" onChange={this.handleInputProfession} />
+                  <br />
+                    <input type="text" className="form-control" id="textForPhoto" aria-describedby="Picture" placeholder="Upload your picture" onChange={this.handleInputPhoto} />
+                  <div className="form-group">
+                    <hr />
+                    <p className="text-left">Enter your statement:</p>
+                    <textarea className="form-control" id="statementTextArea" rows="3" onChange={this.handleInputStatement}></textarea>
+                  </div>
+                 <button className="btn blue-gradient btn-rounded">Submit <i className="far fa-gem ml-1"></i></button>
+              </form>
+            </div>
+          </div>
+        </div>
     );
   };
 

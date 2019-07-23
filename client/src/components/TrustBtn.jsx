@@ -16,27 +16,15 @@ class TrustBtn extends Component {
 
   turstedView = () => {
     return (
-      <div className="TrustButtonArea">
-        <button className="TrstBtn" onClick={this.handleBreak}>
-          Break trust
-        </button>
-        <div className="contacts_count">
-          <span>13</span>
-        </div>
-      </div>
+    <button onClick={this.handleBreak} className="btn aqua-gradient">Break Trust</button>
     );
   };
 
   defaultView = () => {
     console.log();
     return (
-      <div className="TrustButtonArea">
-        <button className="TrstBtn" onClick={this.handleTrust}>
-          I trust this person
-        </button>
-        <div className="contacts_count">
-          <span>13</span>
-        </div>
+      <div className="p-2 bd-highlight">
+        <button type="button" onClick={this.handleTrust} className="btn aqua-gradient">Trust!</button>
       </div>
     );
   };
