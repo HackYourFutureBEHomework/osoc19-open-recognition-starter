@@ -25,7 +25,7 @@ class LinkGenerator extends Component {
           <div className="col-md-11">
             <button onClick={this.handleGenerateEndpoint} class="btn btn-outline-default">Generate Link for non-members<i class="fas fa-external-link-alt pl-1"></i></button>
             <br />
-            <input type="text" id="generateLink" className="form-control col-lg-10" defaultValue={`http://localhost:3000/addStatemetLink/user/${
+            <input type="text" id="generateLink" className="form-control col-lg-10" value={`http://localhost:3000/addStatemetLink/user/${
                 this.state.linkInfo.to_user_id
               }/${this.state.linkInfo.endpoint}`} />
           </div>

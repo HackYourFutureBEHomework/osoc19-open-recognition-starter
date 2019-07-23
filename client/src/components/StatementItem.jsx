@@ -38,13 +38,13 @@ class StatementItem extends Component {
     console.log(statement);
     return (
       <>
-      <div class="container">
+      <div className="container">
         <section >
-          <div class="media mt-4 px-1">
-            <img class="card-img-100 d-flex z-depth-1 mr-3" src={InfoImage }
+          <div className="media mt-4 px-1">
+            <img className="card-img-100 d-flex z-depth-1 mr-3" src={publisher.photo}
               alt="Generic placeholder" />
-            <div class="media-body">
-              <h5 class="font-weight-bold mt-0">{`${publisher.first_name} ${publisher.last_name}`}</h5>
+            <div className="media-body">
+              <h5 className="font-weight-bold mt-0">{`${publisher.first_name} ${publisher.last_name}`}</h5>
               <p>{publisher.profession}</p>
               <p>{statement.text}</p>
             </div>

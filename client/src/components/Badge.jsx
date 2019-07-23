@@ -1,7 +1,8 @@
 import React from "react";
 import TrustBtn from "./TrustBtn";
-import ProfileImage from "../img/wael.JPG";
+//import ProfileImage from "../img/wael.JPG";
 import BgImgae from "../img/banner.png";
+
 
 const Badge = props => {
   const { userInfo, toUserId, fromUserId, isTrusted, establishTrustRelation, breakTrustRelation, checkTrustExitence, showBtn } = props;
@@ -36,7 +37,7 @@ const Badge = props => {
               </div>
               <div className="col-sm">
                 <div className="avatar mx-auto">
-                  <img src={ProfileImage} class="img-fluid rounded-circle z-depth-1" alt="avatar" style={{width: '230px'}} />
+                  <img src={userInfo.photo} className="img-fluid rounded-circle z-depth-1" alt="avatar" style={{width: '230px'}} />
                 </div>
                 <h3 className="my-3 font-weight-bold">
                   <strong>{`${userInfo.first_name} ${userInfo.last_name}`}</strong>
