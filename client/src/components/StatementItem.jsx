@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import InfoImage from "../img/default.png";
+import InfoImage from "../img/kevin.png";
 
 class StatementItem extends Component {
   constructor(props) {
@@ -39,18 +39,19 @@ class StatementItem extends Component {
     return (
       <>
       <div class="container">
-      <section >
-        <div class="media mt-4 px-1">
-          <img class="card-img-100 d-flex z-depth-1 mr-3" src={InfoImage }
-            alt="Generic placeholder" />
-          <div class="media-body">
-            <h5 class="font-weight-bold mt-0">{`${publisher.first_name} ${publisher.last_name}`}</h5>
-            <p>{publisher.profession}</p>
-            <p>{statement.text}</p>
+        <section >
+          <div class="media mt-4 px-1">
+            <img class="card-img-100 d-flex z-depth-1 mr-3" src={InfoImage }
+              alt="Generic placeholder" />
+            <div class="media-body">
+              <h5 class="font-weight-bold mt-0">{`${publisher.first_name} ${publisher.last_name}`}</h5>
+              <p>{publisher.profession}</p>
+              <p>{statement.text}</p>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+      <br />
       </>
     );
   }
