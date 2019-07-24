@@ -15,7 +15,7 @@ class UserProfile extends Component {
       userStatements: [],
       isTrusted: false,
       isTrustedToAdd: false,
-      differentUser: true
+      isDifferentUser: true
     };
   }
 
@@ -30,7 +30,7 @@ class UserProfile extends Component {
 
   checkSameUser = () => {
     if (this.state.fromUserId === this.state.toUserId) {
-      this.setState({ differentUser: false });
+      this.setState({ isDifferentUser: false });
     }
   };
 
@@ -137,7 +137,8 @@ class UserProfile extends Component {
       fromUserId,
       toUserInfo,
       isTrusted,
-      userStatements
+      userStatements,
+      isDifferentUser
     } = this.state;
     console.log("toUserStatemet", userStatements);
     //this.checkTrustExitence(fromUserId, toUserId);
@@ -151,12 +152,15 @@ class UserProfile extends Component {
           breakTrustRelation={this.breakTrustRelation}
           checkTrustExitence={this.checkTrustExitence}
           isTrusted={isTrusted} 
-          showBtn={true} />
+          showBtn={true} 
+          isDifferentUser={isDifferentUser}
+          />
 
         <StatementList userId={toUserId} userStatements={userStatements} userInfo={toUserInfo} />
-        {this.state.isTrustedToAdd && (
-          <AddStatementItem addStatement={this.handleAddStatement} />
-        )}
+        {this.state.isDifferentUser &&
+         (this.state.isTrustedToAdd && (
+           <AddStatementItem addStatement={this.handleAddStatement} />
+         ))}
         <Footer />
       </div>
     );

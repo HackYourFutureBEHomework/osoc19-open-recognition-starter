@@ -28,7 +28,7 @@ const Badge = props => {
           <div className="container">
             <div className="row">
               <div className="col-sm">
-                {showBtn && <TrustBtn toUserId={toUserId} 
+                {showBtn && props.isDifferentUser && <TrustBtn toUserId={toUserId} 
                                 fromUserId={fromUserId}
                                 establishTrustRelation={establishTrustRelation}
                                 breakTrustRelation={breakTrustRelation}
