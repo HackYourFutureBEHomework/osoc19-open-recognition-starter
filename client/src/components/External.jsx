@@ -1,58 +1,49 @@
 import React, { Component } from "react";
 import ExternalUserForm from "./ExternalUserForm";
 import MyProfile from "./MyProfile";
-
 class Exteranl extends Component {
-  constructor() {
-    super();
-    this.state = {
-      toUserInfo: {},
-      linkInfo: {}
-    };
-  }
-
-  componentDidMount = async () => {
-    await this.getToUserInfo();
-    await this.getLinkInfo();
-  };
-
-  //Get user's info who statement will be written on his/her profile
-  getToUserInfo = async () => {
-    const data = await fetch(
-      `/api/links/link/${this.props.location.pathname.split("/")[2]}`
-    );
-    const userData = await data.json();
-    this.setState({ toUserInfo: userData });
-    this.setState({ islodded: true });
-    console.log("toUserInfo", this.state.toUserInfo);
-  };
-
-  //Get link info
-  getLinkInfo = async () => {
-    const data = await fetch(
-      `/api/links/${this.props.location.pathname.split("/")[2]}`
-    );
-    const linkData = await data.json();
-    this.setState({ linkInfo: linkData });
-    console.log("linkInfo", linkData);
-  };
-
-  // View user profile for external users
-  viewUserProfile = () => {
-    console.log("userrrrrinfo", this.state.toUserInfo);
-    return <MyProfile userId={this.state.toUserInfo.id} isExternal={true} />;
-  };
-
-  // View external form for external users
-  viewExternalForm = () => {
-    return <ExternalUserForm toUserInfo={this.state.toUserInfo} />;
-  };
-
-  render() {
-    console.log(this.props.location.pathname.split("/")[2]);
-    return this.viewExternalForm();
-  }
+ constructor() {
+   super();
+   this.state = {
+     toUserInfo: {},
+     linkInfo: {},
+     isloaded: false
+   };
+ }
+ componentDidMount = () => {
+   this.getData();
+ };
+ //Get user's info who want to show/edit his/her profile and link Info based on endpoint value
+ getData = async () => {
+   const userInfo = await fetch(
+     `/api/links/link/${this.props.location.pathname.split("/")[2]}`
+   );
+   const userData = await userInfo.json();
+   const linkInfo = await fetch(
+     `/api/links/${this.props.location.pathname.split("/")[2]}`
+   );
+   const linkdata = await linkInfo.json();
+   this.setState({ toUserInfo: userData, linkInfo: linkdata, isloaded: true });
+   console.log("toUserInfo", this.state.toUserInfo);
+   console.log("linkInfo", this.state.linkInfo);
+ };
+ // View user profile for external users
+ viewUserProfile = () => {
+   console.log("userrrrrinfo", this.state.toUserInfo);
+   return <MyProfile userId={this.state.toUserInfo.id} isExternal={true} />;
+ };
+ // View external form for external users
+ viewExternalForm = () => {
+   return <ExternalUserForm toUserInfo={this.state.toUserInfo} />;
+ };
+ //Which view to view to external user
+ checkIfViewMode = () => {
+   return this.state.linkInfo.is_view_mode
+     ? this.viewUserProfile()
+     : this.viewExternalForm();
+ };
+ render() {
+   return this.state.isloaded ? this.checkIfViewMode() : <div>loading...</div>;
+ }
 }
-//<ExternalUserForm toUserInfo={this.state.toUserInfo} />
-//this.viewExternalForm()
 export default Exteranl;

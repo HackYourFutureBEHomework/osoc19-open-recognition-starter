@@ -44,7 +44,7 @@ class MyProfile extends Component {
         <Header />
         <Badge userInfo={this.state.userInfo}
                showBtn={false} />
-        <StatementList userStatements={this.state.userStatements} />
+        <StatementList userId={this.state.userId} userStatements={this.state.userStatements} userInfo={this.state.userInfo} />
         {!isExternal && <LinkGenerator userId={this.state.userId} />}
         <Footer />
       </div>
